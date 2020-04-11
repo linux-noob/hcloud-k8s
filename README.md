@@ -6,6 +6,9 @@ Install a Kubernetes Cluster on Hetzner Cloud. The Playbook install a Master and
 
 Tested Versions Kubernetes v1.15.5 and v1.16.2
 
+---
+# Forked to align with more current dependencies
+
 ## Local Requirements
   - Ansible v2.8.5 (https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
   - Terraform v0.12.10 (https://github.com/tfutils/tfenv#installation)
