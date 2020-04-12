@@ -16,6 +16,8 @@
       worker_servertype: "{{ worker_servertype }}"
       worker_count: "{{ worker_count }}"
       floatip_count: "{{ floatip_count }}"
+      use_my_ip: "{{ use_my_ip }}"
+      my_ip_tag: "{{ my_ip_tag }}"
   register: tf
 
 - name: Create Infrastructure File
