@@ -55,7 +55,7 @@
     src: "{{ playbook_dir }}/roles/kube-master/files/hcloud-csi.yaml"
     dest: /tmp/k8s-install/hcloud-csi.yaml
 
-- name: Deploy HCloud CSI hetznercloud/hcloud-csi-driver:1.1.5
+- name: Deploy HCloud CSI hetznercloud/hcloud-csi-driver
   shell: kubectl create -f /tmp/k8s-install/hcloud-csi.yaml
 
 - name: Create Join Command for the nodes

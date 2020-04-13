@@ -31,7 +31,7 @@ rules:
   # attacher
   - apiGroups: [""]
     resources: ["persistentvolumes"]
-    verbs: ["get", "list", "watch", "update"]
+    verbs: ["get", "list", "watch", "update", "patch"]
   - apiGroups: [""]
     resources: ["nodes"]
     verbs: ["get", "list", "watch"]
@@ -40,7 +40,7 @@ rules:
     verbs: ["get", "list", "watch"]
   - apiGroups: ["storage.k8s.io"]
     resources: ["volumeattachments"]
-    verbs: ["get", "list", "watch", "update"]
+    verbs: ["get", "list", "watch", "update", "patch"]
   # provisioner
   - apiGroups: [""]
     resources: ["secrets"]
@@ -100,7 +100,7 @@ spec:
       serviceAccount: hcloud-csi
       containers:
         - name: csi-attacher
-          image: quay.io/k8scsi/csi-attacher:v1.2.1
+          image: quay.io/k8scsi/csi-attacher:v2.2.0
           args:
             - --csi-address=/var/lib/csi/sockets/pluginproxy/csi.sock
             - --v=5
