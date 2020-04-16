@@ -44,14 +44,7 @@
 - name: Reload sysctl
   shell: sysctl -p
 
-#- name: Auto Mount BPF filesystem for cilium network plugin
-#  blockinfile:
-#    path: /etc/fstab
-#    block: |
-#      bpffs                      /sys/fs/bpf             bpf     defaults 0 0
-
 - name: Mount BPF filesystem for cilium network plugin
-#  shell: mount /sys/fs/bpf
   mount:
     src: bpffs
     path: /sys/fs/bpf
