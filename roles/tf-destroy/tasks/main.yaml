@@ -13,4 +13,5 @@
       floatip_count: "{{ floatip_count }}"
       use_my_ip: "{{ use_my_ip }}"
       my_ip_tag: "{{ my_ip_tag }}"
+      domain: "{{ domain }}"
   register: tf
