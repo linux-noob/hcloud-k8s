@@ -35,4 +35,4 @@ runcmd:
   - sed -i -e '/^#AuthorizedKeysFile/s/^.*$/AuthorizedKeysFile .ssh/authorized_keys/' /etc/ssh/sshd_config
   - sed -i '$a AllowUsers k8s' /etc/ssh/sshd_config
   - touch /opt/ready.txt
-  - reboot
+  - reboot now
