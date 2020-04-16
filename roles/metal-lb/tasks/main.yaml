@@ -35,7 +35,8 @@
 
 # patch kube-proxy for Metal LB
 - name: Apply kube-proxy config patch for Metal LB
-  shell: kubectl get configmap/kube-proxy -n kube-system -o yaml | sed 's/mode:.*$/mode: "ipvs"/' | sed 's/strictARP:.*$/strictARP: true/' | kubectl replace -f -
+  shell: |-
+    kubectl get configmap/kube-proxy -n kube-system -o yaml | sed 's/mode:.*$/mode: "ipvs"/' | sed 's/strictARP:.*$/strictARP: true/' | kubectl replace -f -
 
 # install Metal LB
 - name: Create Namespace for Metal LB
