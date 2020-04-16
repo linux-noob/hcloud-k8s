@@ -82,3 +82,8 @@ resource "hcloud_rdns" "rdns_lbipv4" {
   ip_address     = hcloud_floating_ip.lbipv4[count.index].ip_address
   dns_ptr        = length(hcloud_floating_ip.lbipv4) == 1 ? "lb.${var.domain}" : "lb-${count.index + 1}.${var.domain}"
 }
+
+data "hcloud_floating_ip" "lbipv4" {
+  count         = var.use_my_ip > 0 ? 1 : 0
+  with_selector = var.my_ip_tag
+}
