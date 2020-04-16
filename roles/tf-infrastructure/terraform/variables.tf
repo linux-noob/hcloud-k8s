@@ -39,3 +39,8 @@ variable "my_ip_tag" {
   type        = string
   description = "Floating IP tag - Replaced by Ansible Playbook on run"
 }
+
+variable "domain" {
+  type        = string
+  description = "Top Level Domain - Replaced by Absible Playbook on run"
+}

@@ -24,11 +24,18 @@ resource "hcloud_network_subnet" "worker" {
 
 resource "hcloud_server" "master" {
   count       = 1
-  name        = "master${count.index}"
+  name        = "master.${var.domain}"
   image       = "ubuntu-18.04"
   server_type = var.master_servertype
   location    = var.datacenter
   user_data   = file("./user-data/cloud-config.yaml")
+}
+
+resource "hcloud_rdns" "rdns_master" {
+  count      = length(hcloud_server.master)
+  server_id  = hcloud_server.master[count.index].id
+  ip_address = hcloud_server.master[count.index].ipv4_address
+  dns_ptr    = hcloud_server.master[count.index].name
 }
 
 resource "hcloud_server_network" "master_network" {
@@ -41,11 +48,18 @@ resource "hcloud_server_network" "master_network" {
 # Worker
 resource "hcloud_server" "worker" {
   count       = var.worker_count
-  name        = "worker${count.index}"
+  name        = "node-${count.index + 1}.${var.domain}"
   image       = "ubuntu-18.04"
   server_type = var.worker_servertype
   location    = var.datacenter
   user_data   = file("./user-data/cloud-config.yaml")
+}
+
+resource "hcloud_rdns" "rdns_worker" {
+  count = length(hcloud_server.worker)
+  server_id = hcloud_server.worker[count.index].id
+  ip_address = hcloud_server.worker[count.index].ipv4_address
+  dns_ptr = hcloud_server.worker[count.index].name
 }
 
 resource "hcloud_server_network" "worker_network" {

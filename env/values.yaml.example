@@ -13,7 +13,9 @@ worker_count: 1
 # Count Pool IPs for Metal Load Balancer
 floatip_count: 1
 use_my_ip: 1
-my_ip_tag: tag=rvasilev
-# Tested 1.15.5 and 1.16.2
+my_ip_tag: tag=example
+# Domain for master, workers and lb. (rDNS, Hostname)
+domain: example.com
+# Tested 1.15.5 and 1.16.2 and 1.17.4
 kubenetes_version: 1.17.4
 local_kube_context_path: /home/<YOUR-USER>/.kube
