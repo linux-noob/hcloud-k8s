@@ -1,5 +1,5 @@
 provider "hcloud" {
-  token   = var.hcloud_token
+  token = var.hcloud_token
 }
 
 # Private Network and subnets
@@ -56,10 +56,10 @@ resource "hcloud_server" "worker" {
 }
 
 resource "hcloud_rdns" "rdns_worker" {
-  count = length(hcloud_server.worker)
-  server_id = hcloud_server.worker[count.index].id
+  count      = length(hcloud_server.worker)
+  server_id  = hcloud_server.worker[count.index].id
   ip_address = hcloud_server.worker[count.index].ipv4_address
-  dns_ptr = hcloud_server.worker[count.index].name
+  dns_ptr    = hcloud_server.worker[count.index].name
 }
 
 resource "hcloud_server_network" "worker_network" {
