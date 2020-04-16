@@ -1,7 +1,5 @@
 # hcloud-k8s
 
-# unfortunately I have no time to maintain - please fork it
-
 Install a Kubernetes Cluster on Hetzner Cloud. The Playbook install a Master and Workers with Private Networking inclusive Cloud Controller Manager for Hetzner Cloud, Load Balancer and Failover IPs.
 
 Tested Versions Kubernetes v1.15.5 and v1.16.x and v1.17.4
